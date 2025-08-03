@@ -42,8 +42,8 @@
       <!-- Activity 9: Render a list of Austen's works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <!-- TODO: CODE TO RENDER LIST OF AUSTEN'S WORKS HERE -->
       <ul>
-        <li v-for="(work, index) in austen?.works" :key="index">
-          {{ work }}
+        <li v-for="(work, index) in austen?.famousWorks" :key="index">
+          {{ work.title }} ({{ work.year }})
         </li>
       </ul>
     </section>
@@ -57,7 +57,7 @@
         Company:
         <!-- Activity 9a: Get the company name from the bookstores object. -->
         <!-- TODO: CODE TO GET COMPANY NAME HERE -->
-        {{ bookstores.company }}
+        {{ bookstores.name }}
       </p>
 
       <p>
@@ -157,7 +157,7 @@ const orwell = computed(() => {
 // Activity 5: Find author by ID
 const austen = computed(() => {
   // TODO: CODE TO FIND AUTHOR BY ID HERE
-  return authors.find((author) => author.id === 2)
+  return authors.find((author) => author.id === 1)
 })
 </script>
 
