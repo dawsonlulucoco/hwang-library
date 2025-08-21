@@ -88,29 +88,19 @@
           </div>
         </form>
 
-        <!-- Submitted cards -->
-        <div class="row mt-5" v-if="submittedCards.length">
-          <div class="d-flex flex-wrap justify-content-start">
-            <div
-              v-for="(card, index) in submittedCards"
-              :key="index"
-              class="card m-2"
-              style="width: 18rem"
-            >
-              <div class="card-header">User Information</div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Username: {{ card.username }}</li>
-                <li class="list-group-item">Password: {{ card.password }}</li>
-                <li class="list-group-item">
-                  Australian Resident: {{ card.isAustralian ? 'Yes' : 'No' }}
-                </li>
-                <li class="list-group-item">Gender: {{ card.gender }}</li>
-                <li class="list-group-item">Reason: {{ card.reason }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- /Submitted cards -->
+        <DataTable
+          v-if="submittedCards.length"
+          :value="submittedCards"
+          class="mt-4"
+          :stripedRows="true"
+          tableStyle="min-width: 40rem"
+        >
+          <Column field="username" header="Username"></Column>
+          <Column field="password" header="Password"></Column>
+          <Column field="isAustralian" header="Australian Resident"></Column>
+          <Column field="gender" header="Gender"></Column>
+          <Column field="reason" header="Reason"></Column>
+        </DataTable>
       </div>
     </div>
   </div>
@@ -118,6 +108,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
 
 const formData = ref({
   username: '',
